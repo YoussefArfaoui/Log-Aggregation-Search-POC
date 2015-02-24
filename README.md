@@ -89,7 +89,8 @@ To be able to follow this guideline, we are expecting that you have:
 From your eclipse IDE, create a simple maven project. The pom.xml file
 will look like the following image
 
-> ![](media/image1.png)
+
+> ![image1](https://cloud.githubusercontent.com/assets/3845225/6345672/a8490c7a-bc08-11e4-89e6-3852b300e788.png)
 
 3.2.  <span id="_Toc412462102" class="anchor"></span>Add maven
     dependencies
@@ -109,7 +110,7 @@ dependencies to add the logging capability to our project.
     project. It provides RabbitMQ implementation for the AMQP messaging
     standard.
 
-> ![](media/image2.png)
+> ![image2](https://cloud.githubusercontent.com/assets/3845225/6345671/a848f280-bc08-11e4-931b-c21a1449ee7d.png)
 
 3.3.  <span id="_Toc412462103" class="anchor"></span>Configure log4j file
 
@@ -208,7 +209,7 @@ framework will use the default system logging configuration.
 Create a simple java class using eclipse that generates a log event each
 5 seconds.
 
-![](media/image3.png)
+![image3](https://cloud.githubusercontent.com/assets/3845225/6345673/a8496210-bc08-11e4-896b-94481edc0b06.png)
 
 4.  <span id="_Toc412462105" class="anchor"></span>RabbitMQ Installation
 
@@ -220,7 +221,7 @@ Then just run the installer, rabbitmq-server-x.y.z.exe. It takes around
 default configuration. A new entry in your windows applications list
 will be added.
 
-![](media/image4.png)
+![image4](https://cloud.githubusercontent.com/assets/3845225/6345652/a7e847fa-bc08-11e4-9226-705edb242bfe.png)
 
 -   Start the RabbitMQ server.
 
@@ -228,45 +229,45 @@ Run the RabbitMQ Service- start link from the application menu.
 
 -   Start RabbitMQ web Client : logon to the default url
     <http://localhost:15672/> with the default user ‘guest’ and the
-    default user password ‘guest’ .![](media/image5.png)
+    default user password ‘guest’. ![image5](https://cloud.githubusercontent.com/assets/3845225/6345655/a7eb619c-bc08-11e4-8210-e11ce909eb0f.png)
 
 -   Create a queue: from the Queues tab add new queue with
     name=exchange.log.topic
 
-![](media/image6.png)
+![image6](https://cloud.githubusercontent.com/assets/3845225/6345653/a7e9328c-bc08-11e4-9922-558ebf1748c3.png)
 
 -   Create exchange logs :from the Exchanges tab add new exchange with
     name=logs type=topic (It should match the amqp appender
     configuration in the log4j.xml file).
 
-![](media/image7.png)
+![image7](https://cloud.githubusercontent.com/assets/3845225/6345656/a7ec6b82-bc08-11e4-9f64-750fb797c70e.png)
 
 -   Bind the exchange logs to  the queue: from the Queues tab, select
     the created queue and add exchange binding to it. We put the
     RoutingKey=”\#” means we listing to event coming from exchange. We
     can do more filtering later.
 
-![](media/image8.png)
+![image8](https://cloud.githubusercontent.com/assets/3845225/6345654/a7ea5da6-bc08-11e4-913f-b3ea8dd47f8e.png)
 
 The result will be something like this
 
-![](media/image9.png)
+![image9](https://cloud.githubusercontent.com/assets/3845225/6345657/a7ed0722-bc08-11e4-96e4-442610f2a6e4.png)
 
 -   Test Application/RabbitMQ connection: to test if our configuration
     was correct, From eclipse run you class a java application(debug
     mode)
 
-![](media/image10.png)
+![image10](https://cloud.githubusercontent.com/assets/3845225/6345658/a80559ee-bc08-11e4-802e-42b4a8cfdc1c.png)
 
 Log messages in the console
 
-![](media/image11.png)
+![image11](https://cloud.githubusercontent.com/assets/3845225/6345661/a80ca280-bc08-11e4-8cf0-e7ec7f3f1274.png)
 
 Looking in the RabbitMQ web console, one connection is established, two
 communication channels (in/out) was created and message stream is coming
 to the created queue.
 
-![](media/image12.png)
+![image12](https://cloud.githubusercontent.com/assets/3845225/6345660/a80a7dfc-bc08-11e4-9e03-04e193dbf17e.png)
 
 5.  <span id="_Toc412462106" class="anchor"></span>LogStash Installation
 
@@ -276,11 +277,11 @@ next step: the logstash configuration.
 -   Extract the logstash-x.y.z.zip file in a local folder from your
     choice.
 
-![](media/image13.png)
+![image13](https://cloud.githubusercontent.com/assets/3845225/6345659/a80a19c0-bc08-11e4-81e5-dc1541329f01.png)
 
 -   Navigate to logstash/bin folder and create new file logstash.config
 
-![](media/image14.png)
+![image14](https://cloud.githubusercontent.com/assets/3845225/6345663/a80e425c-bc08-11e4-8424-4ef62d1a625d.png)
 
 Logstash is based on the plugin concept. There are three major plugin
 types (input, filter and output)
@@ -302,7 +303,7 @@ host, the exchange and the key. So make sure that they match your
 RabbitMQ configuration. For output will configure the elasticsearch
 plugin. For more information consult the elasticsearch website
 
-![](media/image15.png)
+![image15](https://cloud.githubusercontent.com/assets/3845225/6345662/a80d5b8a-bc08-11e4-920b-2a8546809bb1.png)
 
 > input {
 >
@@ -362,7 +363,7 @@ plugin. For more information consult the elasticsearch website
 Extract the elasticSearch-x.y.z.zip file in a local folder from your
 choice.
 
-![](media/image13.png)
+![image13](https://cloud.githubusercontent.com/assets/3845225/6345659/a80a19c0-bc08-11e4-81e5-dc1541329f01.png)
 
 7.  <span id="_Toc412462108" class="anchor"></span>Test the complete
     configuration
@@ -376,38 +377,38 @@ will try to run all tools together and the final result.
 
 -   From the cmd, run the elasticSearch.bat file
 
-![](media/image16.png)
+![image16](https://cloud.githubusercontent.com/assets/3845225/6345664/a8213ab0-bc08-11e4-83e5-19e7ea43f6df.png)
 
 The expected message:
 
-![](media/image17.png)
+![image17](https://cloud.githubusercontent.com/assets/3845225/6345668/a82b3cc2-bc08-11e4-82e7-5d6072503271.png)
 
 -   From cmd, run the logstash agent by specifying the logstash.conf
     configuration file
 
-![](media/image18.png)
+![image18](https://cloud.githubusercontent.com/assets/3845225/6345666/a82ab25c-bc08-11e4-8246-fb16abf14a14.png)
 
 -   After starting the agent, launch logstash web component (logstash
     includes a web component called Kabana to provide web visualization
     of the logged data…).
 
-![](media/image19.png)
+![image19](https://cloud.githubusercontent.com/assets/3845225/6345667/a82ab676-bc08-11e4-9e50-b8de301e66f6.png)
 
 -   Using your web browser, logon to <http://localhost:9292/> , you will
     get this result: a processed data is shown in the diagram
 
-![](media/image20.png)
+![image20](https://cloud.githubusercontent.com/assets/3845225/6345665/a828c49c-bc08-11e4-87db-cd3c9b33046e.png)
 
 Logon again to RabbitMQ web console, and new connection is added with
 type consumer and new channel is added to. You can remark that the data
 is in processing mode
 
-![](media/image21.png)
+![image21](https://cloud.githubusercontent.com/assets/3845225/6345669/a8326a88-bc08-11e4-83a7-9e856d214a0f.png)
 
 You can use the Kabana logstash web interface to filter and search for
 specific events and messages:
 
-![](media/image22.png)
+![image22](https://cloud.githubusercontent.com/assets/3845225/6345670/a83fbb3e-bc08-11e4-9e88-fce94ac7207e.png)
 
 8.  <span id="_Toc412462109" class="anchor"></span>Conclusion
 
