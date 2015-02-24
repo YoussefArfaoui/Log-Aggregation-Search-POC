@@ -149,85 +149,54 @@ framework will use the default system logging configuration.
 
     -   Console appender : used to redirect the application logs to the
         default console
-
-> \<appender name="console" class="org.apache.log4j.ConsoleAppender"\>
->
-> \<param name="Target" value="System.out" /\>
->
-> \<layout class="org.apache.log4j.PatternLayout"\>
->
-> \<param name="ConversionPattern" value="%d{HH:mm:ss.SSS} %C{1}  [%t]
-> %-5p %m%n"/\>
->
-> \</layout\>
->
-> \</appender\>
-
+```xml
+ <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+                <param name="ConversionPattern" value="%d{HH:mm:ss.SSS} %C{1}  [%t]%-5p %m%n"/>
+        </layout>
+ </appender>
+```
 -   Amqp appender : it’s a log4J appender to publish a logging events to
     an AMQP Exchange (in our case it’s a Rabbit AMQP Exchange).
 
-> \<appender class="org.springframework.amqp.rabbit.log4j.AmqpAppender"
->
-> name="amqp"\>
->
-> \<param value="false" name="autoDelete" /\>
->
-> \<param value="text/plain" name="contentType" /\>
->
-> \<param value="false" name="declareExchange" /\>
->
-> \<param value="PERSISTENT" name="deliveryMode" /\>
->
-> \<param value="true" name="durable" /\>
->
-> \<param value="logs" name="exchangeName" /\>
->
-> \<param value="topic" name="exchangeType" /\>
->
-> \<param value="false" name="generateId" /\>
->
-> \<param value="localhost" name="host" /\>
->
-> \<param value="guest" name="username" /\>
->
-> \<param value="guest" name="password" /\>
->
-> \<param value="30" name="maxSenderRetries" /\>
->
-> \<param value="%c.%p" name="routingKeyPattern" /\>
->
-> \<param value="2" name="senderPoolSize" /\>
->
-> \<!-- \<param value="/" name="virtualHost" /\> --\>
->
-> \<layout class="org.apache.log4j.PatternLayout"\>
->
-> \<param value="%d %p %t [%c] - &amp;lt;%m&amp;gt;%n"
-> name="ConversionPattern" /\>
->
-> \</layout\>
->
-> \</appender\>
-
+```xml
+<appender class="org.springframework.amqp.rabbit.log4j.AmqpAppender" name="amqp">
+          <param value="false" name="autoDelete" />
+          <param value="text/plain" name="contentType" />
+          <param value="false" name="declareExchange" />
+          <param value="PERSISTENT" name="deliveryMode" />
+          <param value="true" name="durable" />
+          <param value="logs" name="exchangeName" />
+          <param value="topic" name="exchangeType" />
+          <param value="false" name="generateId" />
+          <param value="localhost" name="host" />
+          <param value="guest" name="username" />
+          <param value="guest" name="password" />
+          <param value="30" name="maxSenderRetries" />
+          <param value="%c.%p" name="routingKeyPattern" />
+          <param value="2" name="senderPoolSize" />
+          <!-- <param value="/" name="virtualHost" /> -->
+          <layout class="org.apache.log4j.PatternLayout">
+                <param value="%d %p %t [%c] - &amp;lt;%m&amp;gt;%n" name="ConversionPattern" />
+          </layout>
+</appender>
+```
 -   Create loggers : add one logger with logging level=debug.
-
-> \<logger name="com.iam.rabbitmq.log.rabbitmqlog"\>
->
-> \<level value="debug" /\>
->
-> \</logger\>
+```xml
+<logger name="com.iam.rabbitmq.log.rabbitmqlog">
+       <level value="debug" />
+</logger>
+```
 
 -   Add console and amqp appenders to the root configuration.
-
-> \<root\>
->
-> \<priority value="debug" /\>
->
-> \<appender-ref ref="console" /\>
->
-> \<appender-ref ref="amqp" /\>
->
-> \</root\>
+```xml
+<root>
+    <priority value="debug" />
+    <appender-ref ref="console" />
+    <appender-ref ref="amqp" />
+</root>
+```
 
 ### Create Application java class
 
@@ -330,58 +299,36 @@ plugin. For more information consult the elasticsearch website
 
 ![image15](https://cloud.githubusercontent.com/assets/3845225/6345662/a80d5b8a-bc08-11e4-920b-2a8546809bb1.png)
 
-> input {
->
-> rabbitmq {
->
->    auto\_delete =\> false
->
->    debug =\> true
->
->    durable =\> true
->
-> queue =\> "exchange.log.topic"
->
->    host =\> "localhost"
->
-> exchange =\> "logs"
->
->    key =\> "\#"
->
->    }
->
-> }
->
-> filter {
->
->  mutate {
->
->    add\_field =\> [ "hostip", "%{host}" ]
->
->  }
->
->  dns {
->
->    reverse =\> [ "host" ]
->
->    action =\> replace
->
-> }
->
-> }
->
-> output {
->
->  elasticsearch {
->
->    host =\> "localhost"
->
-> protocol =\> "http"
->
->  }
->
-> }
+```ruby
+ input {
+    rabbitmq {
+       auto_delete => false
+       debug => true
+       durable => true
+       queue => "exchange.log.topic"
+       host => "localhost"
+       exchange => "logs"
+       key => "#"
+       }
+ }
+ 
+ filter {
+      mutate {
+        add_field => [ "hostip", "%{host}" ]
+       }
+       dns {
+         reverse => [ "host" ]
+         action => replace
+      }
+ }
 
+ output {
+       elasticsearch {
+         host => "localhost"
+      protocol => "http"
+       }
+ }
+```
 ## ElasticSearch Installation
 
 Extract the elasticSearch-x.y.z.zip file in a local folder from your
