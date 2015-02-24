@@ -1,7 +1,10 @@
-# Log-Aggregation-Search-POC
+# Log Aggregation &amp; Search POC:
 Log Aggregation &amp; Search POC: Spring-amqp, log4j, RabbitMQ, Logstash, ElasticSearch configuration
+ 
+Table of Contents
 
-1.  <span id="_Toc412462098" class="anchor"></span>Introduction
+
+## Introduction
 
 Monitoring company system logs is essential for spotting problems and
 halting the software deployment pipeline. Rather than manually
@@ -60,7 +63,7 @@ Advanced Message Queuing Protocol (AMQP). The server is written in the
 Erlang programming language and is built on the Open Telecom Platform
 framework for clustering and failover.
 
-2.  <span id="_Toc412462099" class="anchor"></span>Requirements
+## Requirements
 
 To be able to follow this guideline, we are expecting that you have:
 
@@ -81,10 +84,9 @@ To be able to follow this guideline, we are expecting that you have:
     [*http://www.elasticsearch.org/*](http://www.elasticsearch.org/)
     link (the current version is elasticsearch-1.4.4).
 
-3.  <span id="_Toc412462100" class="anchor"></span>Project setup
+## Project setup
 
-    3.1.  <span id="_Toc412462101" class="anchor"></span>Create a java
-        maven project
+### Create a java maven project
 
 From your eclipse IDE, create a simple maven project. The pom.xml file
 will look like the following image
@@ -92,8 +94,7 @@ will look like the following image
 
 > ![image1](https://cloud.githubusercontent.com/assets/3845225/6345672/a8490c7a-bc08-11e4-89e6-3852b300e788.png)
 
-3.2.  <span id="_Toc412462102" class="anchor"></span>Add maven
-    dependencies
+### Add maven dependencies
 
 After creating the maven project, we need to configure the maven
 dependencies to add the logging capability to our project.
@@ -112,7 +113,7 @@ dependencies to add the logging capability to our project.
 
 > ![image2](https://cloud.githubusercontent.com/assets/3845225/6345671/a848f280-bc08-11e4-931b-c21a1449ee7d.png)
 
-3.3.  <span id="_Toc412462103" class="anchor"></span>Configure log4j file
+### Configure log4j file
 
 Next is creating a log4j configuration file. If you don’t do, the log4j
 framework will use the default system logging configuration.
@@ -203,15 +204,14 @@ framework will use the default system logging configuration.
 >
 > \</root\>
 
-3.4.  <span id="_Toc412462104" class="anchor"></span>Create Application
-    java class
+### Create Application java class
 
 Create a simple java class using eclipse that generates a log event each
 5 seconds.
 
 ![image3](https://cloud.githubusercontent.com/assets/3845225/6345673/a8496210-bc08-11e4-896b-94481edc0b06.png)
 
-4.  <span id="_Toc412462105" class="anchor"></span>RabbitMQ Installation
+## RabbitMQ Installation
 
 The installation is quite simple. Firstly, we need to install the Erlang
 language in the machine to be able to run RabbitMQ. So download and run
@@ -269,7 +269,7 @@ to the created queue.
 
 ![image12](https://cloud.githubusercontent.com/assets/3845225/6345660/a80a7dfc-bc08-11e4-9e03-04e193dbf17e.png)
 
-5.  <span id="_Toc412462106" class="anchor"></span>LogStash Installation
+## LogStash Installation
 
 After configuring the appender and the message broker, we pass to the
 next step: the logstash configuration.
@@ -357,16 +357,14 @@ plugin. For more information consult the elasticsearch website
 >
 > }
 
-6.  <span id="_Toc412462107" class="anchor"></span>ElasticSearch
-    Installation
+## ElasticSearch Installation
 
 Extract the elasticSearch-x.y.z.zip file in a local folder from your
 choice.
 
 ![image13](https://cloud.githubusercontent.com/assets/3845225/6345659/a80a19c0-bc08-11e4-81e5-dc1541329f01.png)
 
-7.  <span id="_Toc412462108" class="anchor"></span>Test the complete
-    configuration
+## Test the complete  configuration
 
 As you can see the basic configuration is very easy, only small concept
 that you need to know to be able make all tools together. Next step, we
@@ -410,7 +408,7 @@ specific events and messages:
 
 ![image22](https://cloud.githubusercontent.com/assets/3845225/6345670/a83fbb3e-bc08-11e4-9e88-fce94ac7207e.png)
 
-8.  <span id="_Toc412462109" class="anchor"></span>Conclusion
+## Conclusion
 
 As you can see the configuration was simple. This basic configuration
 can be easily extended by adding other applications and environments
