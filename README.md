@@ -3,6 +3,31 @@ Log Aggregation &amp; Search POC: Spring-amqp, log4j, RabbitMQ, Logstash, Elasti
  
 Table of Contents
 
+1.	[Introduction](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#introduction)
+
+2.	[Requirements](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#requirements)
+
+3.	[Project setup](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#project-setup)
+
+  3.1.	[Create a java maven project](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#create-a-java-maven-project)
+
+  3.2.	[Add maven dependencies](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#add-maven-dependencies)
+
+  3.3.	[Configure log4j file](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#configure-log4j-file)
+
+  3.4.	[Create Application java class](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#create-application-java-class)
+
+4.	[RabbitMQ Installation](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#rabbitmq-installation)
+
+5.	[LogStash Installation](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#logstash-installation)
+
+6.	[ElasticSearch Installation](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#elasticsearch-installation)
+
+7.	[Test the complete configuration](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#test-the-complete--configuration)
+
+8.	[Conclusion](https://github.com/YoussefArfaoui/Log-Aggregation-Search-POC#conclusion)
+
+
 
 ## Introduction
 
